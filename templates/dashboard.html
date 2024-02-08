@@ -1,0 +1,68 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+        body{
+            background-image: url('/static/pexels-element-digital-1370296.jpg');
+            background-size: cover;
+            background-position: center;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: aliceblue;
+            font-family: 'Crimson Text', serif;
+            text-transform: uppercase;
+        }
+        .school-card {
+            color: black;
+            width: 300px;
+            height: 200px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .btn-primary{
+            width: 100px;
+            height: 40px;
+            font-size: 16px;
+            color: azure;
+            cursor: pointer;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ username }}</h1>
+        <h2>Your Schools:</h2>
+        <div class="row">
+            {% for school in schools %}
+                <div class="col-md-4">
+                    <div class="card school-card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ school[0] }} <br> <br> {{ school[1]}} <br><br></h5>
+                            <a href="/display/{{ school[0] }}" class="btn-primary"> View Details >>></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="/login.html" class="btn-logout">Logout</a>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Successful Payment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 50px;
+    }
+    h2 {
+      color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Payment Successful</h2>
+    
+    <h3>Transaction Details:-</h3>
+    <p><strong>Transaction ID:</strong> {{ transaction_id }}</p>
+    <p><strong>Date and Time:</strong> {{ current_datetime }}</p>
+    
+    <h3>User Information:-</h3>
+    <p><strong>User ID:</strong> {{ form_data['transactionId'] }}</p>
+   
+    {% if 'amount' in form_data %}
+        {% set original_amount = form_data['amount'] | int / 100 %}
+        <p><strong>Original Amount:</strong> Rs.{{ original_amount }}</p>
+    {% endif %}
+    
+    <h3>Payment Details:-</h3>
+    <p><strong>Status:</strong> {{ checkout_response['data']['status'] }}</p>
+    <p><strong>Payment ID:</strong> {{ checkout_response['data']['paymentId'] }}</p>
+    
+    {% if checkout_response['data'].get('instrumentResponse') %}
+      <h3>Instrument Details:</h3>
+      <p><strong>Instrument Type:</strong> {{ checkout_response['data']['instrumentResponse']['instrumentType'] }}</p>
+      <p><strong>Bank Name:</strong> {{ checkout_response['data']['instrumentResponse']['bankName'] }}</p>
+    {% endif %}
+    
+    <p>Thank you for using our payment service!</p>
+  </div>
+</body>
+</html>

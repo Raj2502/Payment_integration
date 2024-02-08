@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+        body{
+            background-image: url("/static/pexels-stephan-seeber-1261728.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Crimson Text', serif;
+            text-transform: uppercase;
+        }
+        .container{
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            padding: 38px;
+            width: 400px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+            box-shadow: 0 0 50px blueviolet;
+        }
+        input{
+            width: 200px;
+            height: 40px;
+            font-size: 16px;
+            padding: 0 5px;
+            background: transparent;
+            border: none;
+            border-radius: 50px;
+            box-shadow: aquamarine 0 0 5px;
+        }
+        button{
+            position: relative;
+            width: 50%;
+            height: 40px;
+            background-color: green;
+            box-shadow: 0 0 10px greenyellow;
+            font-size: 16px;
+            color: azure;
+            cursor: pointer;
+            border-radius: 30px;
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <h1>LOGIN</h1>
+            {% if message %}
+                <p>{{ message }}</p>
+            {% endif %}
+            <form action="/" method = "POST">
+                <label for="username">Username:</label><br>
+                <input type="text" id = "username" name = "username"> <br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password"> <br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
